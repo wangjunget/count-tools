@@ -210,7 +210,7 @@ export default {
 
           // 解析地址
           for (let i = 0; i < array.length; i++) {
-            if (/省|市|自治区|自治州|县|区/g.test(array[i]) && array[i].length > 4) {
+            if (/省|市|自治区|自治州|县|区/g.test(array[i]) && array[i].length >= 10) {
               result.address = array[i]
               array.splice(i, 1)
               break
@@ -227,7 +227,7 @@ export default {
           //   array.splice(i, 1)
           //   break
           // }
-            if (array[i].length <= 3) {
+            if (array[i].length <= 4 && array[i].length >= 2) {
               result.name = array[i]
               array.splice(i, 1)
               break
@@ -241,7 +241,7 @@ export default {
             if (!result.comment) {
               result.comment = array[i]
             } else {
-              result.comment = result.comment + array[i]
+              result.comment = result.comment + ', ' + array[i]
             }
           }
           // console.log(result)
